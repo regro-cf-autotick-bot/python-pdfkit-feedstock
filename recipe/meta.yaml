@@ -15,16 +15,14 @@ source:
 build:
   number: 0
   noarch: python
-  script: python setup.py install --single-version-externally-managed --record record.txt
-  # wkhtmltopdf is not yet available on Windows or Mac
-  skip: true  # [win or osx]
+  script: {{ PYTHON }} -m pip install . --no-deps -vv
 
 requirements:
   host:
-    - python
+    - python >=2.7,<3.0|>=3.2
     - setuptools
   run:
-    - python
+    - python >=2.7,<3.0|>=3.2
     - wkhtmltopdf
 
 test:
